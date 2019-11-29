@@ -31,13 +31,16 @@ describe("Gilded Rose", function() {
   });
 
   it('should quality never be under 0', () => {
-    const gildedRose = new Shop([ new Item("foo", 0, 0) ]);
+    const gildedRose = new Shop([ new Item("quality never be under 0", 0, 0) ]);
     const items = gildedRose.updateQuality();
     expect(items[0].quality).to.equal(0);
   });
 
-    // it('should quality degrade double on sellin 0', () => {
-  // });
+  it('should quality degrade double on sellin 0', () => {
+    const gildedRose = new Shop([ new Item("quality degrade", 0, 10) ]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].quality).to.equal(8);
+  });
   
 
 

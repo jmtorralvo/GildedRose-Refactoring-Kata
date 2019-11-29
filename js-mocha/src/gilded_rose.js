@@ -49,12 +49,21 @@ class Shop {
       console.log('name', item.name);
       let steps = Object.assign({}, specialItems[item.name] || defaultItemSteps);
 
-      item.sellIn = item.sellIn > 0 
-        ? item.sellIn + steps.sellInStep 
-        : 0;
+      //Quality reduces x2 when sellIn is 0
+      steps.qualityStep =  item.sellIn === 0 ? steps.qualityStep * 2 : steps.qualityStep;
+
       item.quality = (item.quality < item.maxQuality || item.quality > 0 ) 
         ? item.quality + steps.qualityStep 
         : item.quality;
+      
+      //Quality nover under 0
+      item.quality = steps.quality < 0 ? 0 : item.quality;
+
+      item.sellIn = item.sellIn > 0 
+        ? item.sellIn + steps.sellInStep 
+        : 0;
+
+      
     });
 
     return this.items;
