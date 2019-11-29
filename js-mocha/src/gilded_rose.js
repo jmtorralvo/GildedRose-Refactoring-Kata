@@ -48,7 +48,7 @@ class Shop {
     this.items.map(item => {
       console.log('name', item.name);
       let steps = Object.assign({}, specialItems[item.name] || defaultItemSteps);
-
+      
       //Quality reduces x2 when sellIn is 0
       steps.qualityStep =  item.sellIn === 0 ? steps.qualityStep * 2 : steps.qualityStep;
 
@@ -57,12 +57,11 @@ class Shop {
         : item.quality;
       
       //Quality nover under 0
-      item.quality = steps.quality < 0 ? 0 : item.quality;
+      item.quality = item.quality < 0 ? 0 : item.quality;
 
       item.sellIn = item.sellIn > 0 
         ? item.sellIn + steps.sellInStep 
         : 0;
-
       
     });
 
