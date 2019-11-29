@@ -95,38 +95,21 @@ describe("Gilded Rose", function() {
   });
 
 
-  // it ('should passes increase quality by 1 when there is more than 10 days to gig', () => {
-  //   const gildedRose = new Shop([ passes ]);
-  //   const items = gildedRose.updateQuality();
-  //   expect(items[0].quality).to.equal(7);
-  // });
+  it ('should passes increase quality by 1 when there is more than 10 days to gig', () => {
+    const gildedRose = new Shop([ passes ]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].quality).to.equal(7);
+  });
 
-  // it ('should passes increase quality by 2 when there is between 10 and 5 days to gig', () => {
-  //   const gildedRose = new Shop([ new Item("Backstage passes", 7, 10) ]);
-  //   const items = gildedRose.updateQuality();
-  //   expect(items[0].quality).to.equal(12);
-  // });
+  it ('should passes increase quality by 2 when there is between 10 and 5 days to gig', () => {
+    const gildedRose = new Shop([ new Item("Backstage passes", 7, 10) ]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].quality).to.equal(12);
+  });
 
-
-  // it("should foo", function() {
-  //   const gildedRose = new Shop([ new Item("Aged Brie", 10, 5) ]);
-  //   const items = gildedRose.updateQuality();
-
-  //   const gildedRose2 = new Shop([ new Item("Conjured", 10, 5) ]);
-  //   const items2 = gildedRose2.updateQuality();
-
-  //   const gildedRose3 = new Shop([ new Item("foo", 10, 5) ]);
-  //   const items3 = gildedRose3.updateQuality();
-
-  // });
-
-
-
-  // it('should passes quality drop to 0 after gig', () => {
-  // });
-  // it('should pases increase quality by 2 when there is less than 5 days to gig', () => {
-  // });
-  // it ('quality never pass up 50 units for any item', () => {
-  // })
-
+  it ('should passes increase quality by 3 when there is under 5 days to gig', () => {
+    const gildedRose = new Shop([ new Item("Backstage passes", 4, 10) ]);
+    const items = gildedRose.updateQuality();
+    expect(items[0].quality).to.equal(13);
+  });
 });
